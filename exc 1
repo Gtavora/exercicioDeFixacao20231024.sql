@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE TRIGGER After_Insert_Clientes
+AFTER INSERT ON Clientes
+FOR EACH ROW
+BEGIN
+    INSERT INTO Auditoria (mensagem) VALUES (CONCAT('Cliente inserido em ', NWO()));
+END;
+//
+DELIMITER ;
