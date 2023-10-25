@@ -7,3 +7,12 @@ BEGIN
 END;
 //
 DELIMITER ;
+DELIMITER //
+CREATE TRIGGER Before_Delete_Clientes
+BEFORE DELETE ON Clientes
+FOR EACH ROW
+BEGIN
+    INSERT INTO Auditoria (mensagem) VALUES (CONCAT('Cliente excluído com sucesso ', NOW()));
+END;
+//
+DELIMITER ;
